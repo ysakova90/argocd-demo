@@ -59,22 +59,20 @@ service:
 # This block is for setting up the ingress for more information can be found here: https://kubernetes.io/docs/concepts/services-networking/ingress/
 ingress:
   enabled: true
-  className: "nginx"
-  annotations:
-    kubernetes.io/ingress.class: nginx
-    cert-manager.io/cluster-issuer: letsencrypt-prod
-    acme.cert-manager.io/http01-edit-in-place: "true"
-
-  path: /
-  pathType: Prefix
-
+  className: "internal-nginx"
+  annotations: 
+    nginx.ingress.kubernetes.io/proxy-body-size: "0"
+    ingress.kubernetes.io/ssl-redirect: "false"
+    cert-manager.io/cluster-issuer: "letsencrypt-internal" 
   hosts:
-    - artemis-dev.${var.dns_name}
-
-  tls:
-    - secretName: argocd-dev-tls
+    - host: "dev-internal-artemis.ysakova.com"
+      paths:
+        - path: /
+          pathType: ImplementationSpecific
+  tls: 
+    - secretName: dev-internal-artemis-tls
       hosts:
-        - artemis-dev.${var.dns_name}
+        - "dev-internal-artemis.ysakova.com"
 
 # -- Expose the service via gateway-api HTTPRoute
 # Requires Gateway API resources and suitable controller installed within the cluster
