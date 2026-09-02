@@ -69,12 +69,12 @@ ingress:
   pathType: Prefix
 
   hosts:
-    - argocd-dev.${var.dns_name}
+    - artemis-dev.${var.dns_name}
 
   tls:
-    - secretName: argocd-tls
+    - secretName: argocd-dev-tls
       hosts:
-        - argocd-dev.${var.dns_name}
+        - artemis-dev.${var.dns_name}
 
 # -- Expose the service via gateway-api HTTPRoute
 # Requires Gateway API resources and suitable controller installed within the cluster
