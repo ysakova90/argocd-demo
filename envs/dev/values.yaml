@@ -66,20 +66,20 @@ service:
 # This block is for setting up the ingress for more information can be found here: https://kubernetes.io/docs/concepts/services-networking/ingress/
 ingress:
   enabled: true
-  className: "internal-nginx"
+  className: "nginx"
   annotations: 
     nginx.ingress.kubernetes.io/proxy-body-size: "0"
     ingress.kubernetes.io/ssl-redirect: "false"
-    cert-manager.io/cluster-issuer: "letsencrypt-internal" 
+    cert-manager.io/cluster-issuer: "letsencrypt" 
   hosts:
-    - host: "dev-internal-artemis.ysakova.com"
+    - host: "dev-artemis.ysakova.com"
       paths:
         - path: /
           pathType: ImplementationSpecific
   tls: 
-    - secretName: dev-internal-artemis-tls
+    - secretName: dev-artemis-tls
       hosts:
-        - "dev-internal-artemis.ysakova.com"
+        - "dev-artemis.ysakova.com"
 
 
 
