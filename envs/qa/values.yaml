@@ -72,14 +72,14 @@ ingress:
     ingress.kubernetes.io/ssl-redirect: "false"
     cert-manager.io/cluster-issuer: "letsencrypt" 
   hosts:
-    - host: "dev-artemis.ysakova.com"
+    - host: "qa-artemis.ysakova.com"
       paths:
         - path: /
           pathType: ImplementationSpecific
   tls: 
-    - secretName: dev-artemis-tls
+    - secretName: qa-artemis-tls
       hosts:
-        - "dev-artemis.ysakova.com"
+        - "qa-artemis.ysakova.com"
 
 
 
