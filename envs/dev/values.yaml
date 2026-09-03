@@ -12,7 +12,7 @@ podAnnotations:
   prometheus.io/path: "/metrics"
 
 image:
-  repository: "us-west1-docker.pkg.dev/local-tracker-504600-a6/artemis"
+  repository: "us-west1-docker.pkg.dev/local-tracker-504600-a6/artemis/artemis"
   tag: "11.0.0"
 
 service:
